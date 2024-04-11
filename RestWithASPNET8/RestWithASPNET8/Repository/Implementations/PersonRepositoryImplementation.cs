@@ -2,13 +2,13 @@
 using RestWithASPNET8.Model.Context;
 using System;
 
-namespace RestWithASPNET8.Services.Implementations
+namespace RestWithASPNET8.Repository.Implementations
 {
-    public class PersonServiceImplementation : IPersonService
+    public class PersonRepositoryImplementation : IPersonRepository
     {
         private MySQLContext _context;
 
-        public PersonServiceImplementation(MySQLContext context) 
+        public PersonRepositoryImplementation(MySQLContext context) 
         {
             _context = context;
         }
@@ -75,7 +75,7 @@ namespace RestWithASPNET8.Services.Implementations
             }
 
         }
-        private bool Exists(long id)
+        public bool Exists(long id)
         {
             return _context.Persons.Any((p => p.Id.Equals(id)));
         }

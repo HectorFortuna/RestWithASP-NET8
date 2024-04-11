@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using RestWithASPNET8.Model.Context;
-using RestWithASPNET8.Services.Implementations;
+using RestWithASPNET8.Business.Implementations;
+using RestWithASPNET8.Repository.Implementations;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,7 +15,8 @@ builder.Services.AddDbContext<MySQLContext>(options => options.UseMySql(connecti
 builder.Services.AddApiVersioning();
 
 // Dependency Injection 
-builder.Services.AddScoped<IPersonService, PersonServiceImplementation>();
+builder.Services.AddScoped<IPersonBusiness, PersonBusinessImplementation>();
+builder.Services.AddScoped<IPersonRepository, PersonRepositoryImplementation>();
 
 var app = builder.Build();
 
